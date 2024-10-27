@@ -143,7 +143,7 @@ const Login = () => {
                 ) : (
                   'Sign in'
                 )}
-                Sign in
+                
               </button>
             </div>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}

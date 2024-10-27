@@ -11,6 +11,7 @@ const Signup = () => {
   })
    
   const[errorMessage,setErrrorMessage]=useState('')
+  const[loading,setLoading]=useState(false)
   const navigate=useNavigate()
   const handleInputChange=(e)=>{
     const{name,value}=e.target
@@ -22,6 +23,7 @@ const Signup = () => {
   }
   const handleSubmit= async(e)=>{
     e.preventDefault()
+    setLoading(true)
    
     if(register.password!==register.confirmPassword)
       {
@@ -40,6 +42,9 @@ const Signup = () => {
       setErrrorMessage(error?.response?.data?.message||"something went wrong")
      
 
+  }
+  finally{
+    setLoading(false)
   }
   }
 }
@@ -168,8 +173,35 @@ const Signup = () => {
             <button
               type="submit"
               className="w-full text-primary bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-            >
-              Create an account
+            >{loading ? (
+              <span className="flex items-center">
+                <svg
+                  className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8H4z"
+                  ></path>
+                </svg>
+                Loading...
+              </span>
+            ) : (
+              'Create an account'
+            )}
+
+               
             </button>
 
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">

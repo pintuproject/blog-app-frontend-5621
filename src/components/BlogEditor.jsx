@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 const BlogEditor = () => {
   const[blogData,setBlogData]=useState({title:'',content:''})
   const navigate=useNavigate()
+  const[loading,setLoading]=useState(false)
 
 const token=localStorage.getItem('token')
   const handleInputChange=(e)=>{
@@ -13,6 +14,7 @@ const token=localStorage.getItem('token')
   }
     const handleSubmit=async(e)=>{
       e.preventDefault();
+      setLoading(true)
       try {
         
         await axios.post(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs`,  blogData, {
@@ -22,6 +24,9 @@ const token=localStorage.getItem('token')
       }
       catch(error){
         console.log(error)
+      }
+      finally{
+        setLoading(false)
       }
      
 
@@ -75,7 +80,34 @@ const token=localStorage.getItem('token')
               type="submit"
               className="w-full py-3 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition duration-150"
             >
-              Publish Post
+              {loading ? (
+                  <span className="flex items-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    Loading...
+                  </span>
+                ) : (
+                  'Publish Post'
+                )}
+              
             </button>
           </div>
     
