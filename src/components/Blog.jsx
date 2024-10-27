@@ -30,7 +30,7 @@ navigate(`/blog-detail/${id}`)
       <li key={item._id}>
      <div className='card-item'>
      <div className="block justify-center  max-w-xxlg p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-style={{height:'300px',width:'700px'}}>
+style={{height:'350px',width:'700px'}}>
    
    <div className="flex items-center space-x-4">
           <img
@@ -62,9 +62,10 @@ style={{height:'300px',width:'700px'}}>
             </p>
           </div>
   
-           <button
+          <button
                   onClick={() => handleReadMore(item._id)}
-                  className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition-colors duration-300"
+                  className="mt-4 text-blue-500 hover:text-blue-700 underline bg-transparent border-none cursor-pointer p-0"
+                  style={{ textDecoration: 'underline', background: 'none' }}
                 >
                   Read more
                 </button>
