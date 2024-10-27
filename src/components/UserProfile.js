@@ -17,6 +17,7 @@ const UserProfile = () => {
     localStorage.removeItem('token');
     setToken("")
     window.location.reload()
+    
       
      
   };
