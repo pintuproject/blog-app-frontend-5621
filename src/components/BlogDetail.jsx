@@ -19,9 +19,9 @@ const token=localStorage.getItem('token')
 console.log('token',token)
 try{
   const decodeToken= jwtDecode(token)
-  console.log('decode token is',decodeToken)
+   
   const userId=decodeToken.id
-  console.log('user id',userId)
+  
   return userId;
 }catch(error){
 
@@ -59,7 +59,6 @@ try{
 
     try{
      await axios.post(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs/${id}/likes`,{userId})
-    //  setData(prevData=>({...prevData,likes:prevData.likes.push(userId)}))
     const res=await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs/${id}`)
     setData(res.data)
     
@@ -92,8 +91,7 @@ try{
     
 
   }
-  console.log(commentData)
-  console.log(data)
+   
    
   return (
     <>

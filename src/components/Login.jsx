@@ -13,6 +13,7 @@ const Login = () => {
   
     const navigate=useNavigate()
    const{ setIsLogin,setToken,handleLogin}=useContext(UserContext);
+   const[loading,setLoading]=useState(false)
 
   
 
@@ -24,6 +25,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
           const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, credentials);
           console.log(response.data.token)
@@ -40,6 +42,9 @@ const Login = () => {
             setErrrorMessage(error.response?.data?.message)
              
 
+           }
+           finally{
+            setLoading(false)
            }
         }
           const handleSignUp=()=>{
@@ -111,6 +116,33 @@ const Login = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
+                {loading ? (
+                  <span className="flex items-center">
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    Loading...
+                  </span>
+                ) : (
+                  'Sign in'
+                )}
                 Sign in
               </button>
             </div>
