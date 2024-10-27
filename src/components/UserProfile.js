@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from './UserContext';  
+import { useNavigate } from 'react-router-dom';
  
 
 const UserProfile = () => {
   const { isLogin,setToken } = useContext(UserContext); 
   const [dropdownOpen, setDropdownOpen] = useState(false); 
-   
+   const navigate=useNavigate()
    
 
  
@@ -16,10 +17,8 @@ const UserProfile = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     setToken("")
-    window.location.reload()
-    
-      
-     
+    navigate('/login');
+
   };
 
   if (!isLogin) {
