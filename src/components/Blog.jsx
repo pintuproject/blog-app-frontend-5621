@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
 import axios from "axios" 
+import { useNavigate } from 'react-router-dom'
 const Blog = () => {
 
 const[blog,setBlog]=useState([])
+const navigate=useNavigate()
  
 useEffect(()=>{
   const fetchBlogs=async()=>{
@@ -17,7 +19,9 @@ useEffect(()=>{
   }
   fetchBlogs();
 },[])
- 
+ const handleReadMore=(id)=>{
+navigate(`/blog-detail/${id}`)
+ }
  
   return (
     <>
@@ -58,12 +62,12 @@ style={{height:'300px',width:'700px'}}>
             </p>
           </div>
   
-  <a
-            href={`/blog-detail/${item._id}`}
-            className="text-blue-500 hover:text-blue-700"
-          >
-            Read more
-          </a>
+           <button
+                  onClick={() => handleReadMore(item._id)}
+                  className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition-colors duration-300"
+                >
+                  Read more
+                </button>
 </div>
 </div>
 </li>
