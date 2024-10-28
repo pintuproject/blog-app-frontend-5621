@@ -11,8 +11,11 @@ const [loading, setLoading] = useState(true);
 useEffect(()=>{
   const fetchBlogs=async()=>{
     setLoading(true)
+    const startTime = performance.now(); 
     try{
     const response=await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs`)
+    const endTime=performance.now();
+    console.log(`it is taking${endTime-startTime}ms`)
     setBlog(response.data)
     }
     catch(error){
@@ -30,7 +33,7 @@ navigate(`/blog-detail/${id}`)
  
   return (
     <>
-    {loading ?('Loading ...'):(
+    {loading ?(<p className="align-center">Loading ...</p>):(
     <ul>
       {blog.map(item=> (
       <li key={item._id}>
