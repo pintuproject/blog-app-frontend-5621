@@ -1,4 +1,4 @@
- *{
+ /* *{
   padding: 0;
   margin:0
  }
@@ -6,7 +6,49 @@
   margin-top: 20px;
   margin-left: 420px;
   margin-right: 10px;
+ } */
+
+ /* App.css */
+
+/* General styles for the blog card */
+.card-item {
+   max-width: 700px; /* Keep the card max-width */
+   margin: 0 auto; /* Center the card on larger screens */
  }
+ 
+ /* Responsive adjustments */
+ @media (max-width: 768px) {
+   .card-item {
+     width: 100%; /* Take full width on mobile */
+     padding: 1rem; /* Add some padding */
+     margin-bottom: 1rem; /* Add margin between cards */
+   }
+   
+   /* Adjust the layout for the author section */
+   .flex-1 {
+     flex-direction: column; /* Stack elements vertically */
+     align-items: flex-start; /* Align to the start */
+   }
+ 
+   /* Adjust image sizes */
+   .w-12.h-12 {
+     width: 48px; /* Smaller image size for mobile */
+     height: 48px; /* Maintain aspect ratio */
+   }
+ 
+   .text-lg {
+     font-size: 1.25rem; /* Adjust font sizes for mobile */
+   }
+ 
+   .text-2xl {
+     font-size: 1.5rem; /* Adjust font sizes for mobile */
+   }
+ 
+   .font-normal {
+     font-size: 0.875rem; /* Adjust font sizes for mobile */
+   }
+ }
+ 
  .comment{
     display: flex;
     justify-content:space-evenly;
