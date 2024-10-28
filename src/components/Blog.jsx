@@ -6,15 +6,20 @@ const Blog = () => {
 
 const[blog,setBlog]=useState([])
 const navigate=useNavigate()
+const [loading, setLoading] = useState(true);
  
 useEffect(()=>{
   const fetchBlogs=async()=>{
+    setLoading(true)
     try{
     const response=await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs`)
     setBlog(response.data)
     }
     catch(error){
       console.log(error)
+    }
+    finally{
+      setLoading(false)
     }
   }
   fetchBlogs();
@@ -25,6 +30,7 @@ navigate(`/blog-detail/${id}`)
  
   return (
     <>
+    {loading ?('Loading ...'):(
     <ul>
       {blog.map(item=> (
       <li key={item._id}>
@@ -74,6 +80,7 @@ style={{height:'350px',width:'700px'}}>
 </li>
       ))}
 </ul>
+    )}
   </>
   )
 }
