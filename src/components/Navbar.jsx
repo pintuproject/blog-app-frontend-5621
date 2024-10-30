@@ -24,12 +24,12 @@ console.log(isLogin)
   return (
     <nav className="bg-white shadow-md p-4 border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        
           <img src="../blog.jpg" className="h-20" alt="Blog Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Blog
           </span>
-        </a>
+        
         <div className="flex items-center space-x-4">
           {isLogin ? (
             <>

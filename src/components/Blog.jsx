@@ -122,7 +122,7 @@ const Blog = () => {
       {loading ? (
         <p className="align-center">Loading ...</p>
       ) : (
-        <ul className="flex flex-col items-center">
+        <ul className="flex flex-col items-center mt-2">
           {blog.map(item => (
             <li key={item._id}>
               <div className='card-item'>
