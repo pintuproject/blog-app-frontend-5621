@@ -54,17 +54,13 @@ const Signup = () => {
      
   <section className="bg-gray-50 dark:bg-gray-900">
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a
-        href="/app"
-        className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-      >
+      
         <img
-          className="w-30 h-30 mr-2"
+          className="w-30 h-20 mr-2"
           src="./blog.jpg"
           alt="logo"
         />
-        Flowbite
-      </a>
+      
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -172,8 +168,8 @@ const Signup = () => {
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <button
               type="submit"
-              className="w-full text-primary bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-            >{loading ? (
+              className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+             >{loading ? (
               <span className="flex items-center">
                 <svg
                   className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
