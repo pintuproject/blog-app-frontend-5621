@@ -98,7 +98,7 @@ const Blog = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  
     const fetchBlogs = async () => {
       setLoading(true);
       try {
@@ -110,6 +110,7 @@ const Blog = () => {
         setLoading(false);
       }
     };
+    useEffect(() => {
     fetchBlogs();
   }, []);
 
