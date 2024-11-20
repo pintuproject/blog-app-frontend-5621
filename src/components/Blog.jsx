@@ -11,14 +11,16 @@ const Blog = () => {
 
   
     const fetchBlogs = async () => {
-      const start=new Date.getSeconds()
+      const start=new Date()
+      const startTime=start.getSeconds()
       setLoading(true);
       try {
       
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/blog/blogs`);
         setBlog(response.data);
-        const end=new Date.getSeconds()
-        console.log("time is ",end-start)
+        const end=new Date()
+        const endTime=end.getSeconds()
+        console.log("time is ",endTime-startTime)
       } catch (error) {
         console.log(error);
       } finally {
