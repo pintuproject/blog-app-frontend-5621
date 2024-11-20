@@ -24,30 +24,28 @@ const Signup = () => {
   const handleSubmit= async(e)=>{
     e.preventDefault()
     setLoading(true)
-   
+    try{
     if(register.password!==register.confirmPassword)
       {
         setErrrorMessage("Password  and confirm password are different")
-        return ;
+        
       }
       else{
       setErrrorMessage('')
-      try{
+  
       const response=await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, register)
        if(response.status===201){
         navigate('/login')
-       }
+       }}
   }catch(error){
     
       setErrrorMessage(error?.response?.data?.message||"something went wrong")
-     
-
   }
   finally{
     setLoading(false)
   }
   }
-}
+
   
   return (
      <>
